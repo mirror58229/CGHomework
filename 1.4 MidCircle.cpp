@@ -19,17 +19,13 @@ void drawPixel(int x, int y){
 	glFlush();
 }
 /*
-    同时画8个对称点
+    同时画4个对称点
 */
-void drawEight(int x0, int y0, int x, int y){
+void drawFour(int x0, int y0, int x, int y){
     drawPixel(x0 + x, y0 + y);
-    drawPixel(x0 + x, y0 - y);
     drawPixel(x0 + y, y0 + x);
-    drawPixel(x0 + y, y0 - x);
     drawPixel(x0 - x, y0 + y);
-    drawPixel(x0 - x, y0 - y);
     drawPixel(x0 - y, y0 + x);
-    drawPixel(x0 - y, y0 - x);
 }
 void display(void)
 {
@@ -37,7 +33,7 @@ void display(void)
     int x0 = 3,y0 = -2,r = 12;
     int x = 0, y = r;
     int d = 1-r; // floor(1.25-r)
-    drawEight(x0, y0, x, y);
+    drawFour(x0, y0, x, y);
     while(x < y){
         if(d < 0){
             d = d + 2*x + 3;
@@ -47,7 +43,7 @@ void display(void)
             y--;
         }
         x++;
-        drawEight(x0, y0, x, y);
+        drawFour(x0, y0, x, y);
     }
 }
 int main(int argc,char ** argv)
